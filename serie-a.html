@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serie A - Magliette da Calcio</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="./js/script1.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/logo.png" alt="ElFootball logo" class="logo-img">
+    </div>
+    <h1>Serie A</h1>
+    <p>Scegli la tua maglia preferita di Serie A!</p>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="serie-a.html">Serie A</a></li>
+        <li><a href="premier-league.html">Premier League</a></li>
+        <li><a href="nazionali.html">Nazionali</a></li>
+        <div class="search-container" id="search-container">
+          <input type="text" id="search-bar" placeholder="Cerca magliette..." onkeyup="searchProducts()">
+      </ul>
+    </nav>
+  </header>
+
+  <body class="serie-a-page">
+
+    <main>
+      <section class="maglie-section">
+        <div class="container" id="shirt-container">
+          <script>
+            const shirts = [
+              { name: "Atalanta 2024", price: "€85.00", image: "https://store.atalanta.it/images/atalanta/products/large/AT24A01_11.webp", link: "https://store.atalanta.it/it/atalanta-maglia-gara-home-ufficiale-2024-25" },
+              { name: "Bologna 2024", price: "€98.00", image: "https://www.bolognafcstore.com/images/bologna/products/large/BO24A01_16.webp", link: "https://www.bolognafcstore.com/it/bologna-maglia-gara-home-2024-25" },
+              { name: "Como 2024", price: "€95,00", image: "https://shop.comofootball.com/cdn/shop/files/C1907_A1001_01_01.png?v=1732636324&width=3840", link: "https://shop.comofootball.com/products/maglia-home-2024-25-como-1907" },
+              { name: "Empoli 2024", price: "€95.00", image: "https://empolifc.com/wp-content/uploads/Maglie3.png", link: "https://empolifc.com/prodotto/maglia-gara-home-2024-25/" },
+              { name: "Fiorentina 2024", price: "€68.00", image: "https://www.fiorentinastore.com/images/fiorentina/products/large/FI24A10.webp", link: "https://www.fiorentinastore.com/it/fiorentina-maglia-gara-home-kombat-2024-25" },
+              { name: "Genoa 2024", price: "€89.99", image: "https://genoacfc.it/wp-content/uploads/2024/06/home_kombat_pro_1.png", link: "https://genoacfc.it/prodotto/maglia-home-kombat-2024-25/" },
+              { name: "Hellas Verona 2024", price: "€64,00", image: "https://www.hvstore.it/wp-content/uploads/2024/11/home-kit_Creators.png", link: "https://www.hvstore.it/prodotto/maglia-home-adulto-24-25/" },
+              { name: "Inter 2024", price: "€102.99", image: "https://store.inter.it/dw/image/v2/BJBQ_PRD/on/demandware.static/-/Sites-inter-master-catalog/default/dwd6814f4e/images/large/24N001M0303_01.jpg?sw=1400&q=80", link: "https://store.inter.it/it-it/im-nike-maglia-gara-home-stadium-2024%2F25-uomo-24N001M0303.html" },
+              { name: "Juventus 2024", price: "€80.00", image: "https://store.juventus.com/images/juventus/products/large/JU24A01.webp", link: "https://store.juventus.com/it/juventus-maglia-gara-home-2024-25" },
+              { name: "Lazio 2024", price: "€98,00", image: "https://www.laziostylestore.com/images/lazio/products/small/LZ24A01_1.webp", link: "https://www.laziostylestore.com/it/lazio-maglia-gara-home-2024-25" },
+              { name: "Lecce 2024", price: "€45,00", image: "https://www.leccestore.com/wp-content/uploads/2024/06/4Y9A3923.jpg", link: "https://www.leccestore.com/prodotto/m908-1-maglia-replica-u-s-lecce-giallorossa-casa-24-25-adulto-e-bambino/" },
+              { name: "Milan 2024", price: "€105.00", image: "https://store.acmilan.com/cdn/shop/files/774949-A81_01_0749f967-e0a8-4884-a11c-7eff3a6dbb09_600x600_crop_center.jpg?v=1744277778", link: "https://store.acmilan.com/products/acm-home-authentic-jersey" },
+              { name: "Monza 2024", price: "€65,00", image: "https://shop.acmonza.com/cdn/shop/files/222232_0c4-01.jpg?v=1722593746", link: "https://shop.acmonza.com/products/maglia-gara-home-ufficiale-2024-25" },
+              { name: "Napoli 2024", price: "€95,00", image: "https://static.sscnapoli.it/img/p/1/0/1/3/3/10133-large_default.jpg", link: "https://store.sscnapoli.it/it/kit-junior/8381-ssc-napoli-maglia-gara-home-junior-20242025.html" },
+              { name: "Parma 2024", price: "€80,00", image: "https://www.cisalfasport.it/on/demandware.static/-/Sites-cisalfa-master/default/dwea5aa169/cisalfa/files/S5776194-02/image/S5776194_02.jpg", link: "https://www.cisalfasport.it/it-it/puma/maglia-calcio-ufficiale-parma-away-24-25-m-S5776194.html" },
+              { name: "Roma 2024", price: "€60.00", image: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/52e57b8e8be7410fb9d6b72937d16903_9366/Maglia_Home_24-25_Junior_AS_Roma_Bordeaux_IS5846_01_laydown.jpg", link: "https://www.adidas.it/maglia-home-24-25-junior-as-roma/IS5846.html" },
+              { name: "Torino 2024", price: "€59,50", image: "https://torinofcstore.com/308583-pswp_zoom/torino-fc-maglia-gara-home-202425.jpg", link: "https://torinofcstore.com/it/kit-gara-home-202425/55023-4468-torino-fc-maglia-gara-home-202425.html#/123-taglia_adulto_joma-scegli_taglia" },
+              { name: "Udinese 2024", price: "€94,00", image: "https://www.macron.com/media/catalog/product/cache/7854776c5a059fa4314600f243e72018/8/e/8e873ab13f47b77cac1794f6ce67b560700018500001.jpg", link: "https://www.macron.com/it/maglia-home-udinese-calcio-2024-25.html" },
+
+            ];
+          </script>
+        </div>
+      </section>
+
+      <div class="overlay" id="overlay">
+        <span class="overlay-close" onclick="toggleOverlay()">&times;</span>
+        <img id="overlay-img" src="" alt="Maglia grande">
+      </div>
+
+      <footer>
+        &copy; 2025 Magliette Calcio. Tutti i diritti riservati.
+      </footer>
+
+  </body>
+
+</html>

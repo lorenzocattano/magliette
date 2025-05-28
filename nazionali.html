@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nazionali - Magliette da Calcio</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="nazionali-page">
+  <header>
+    <div class="logo-container">
+      <img src="images/logo.png" alt="ElFootball logo" class="logo-img">
+    </div>
+    <h1>Nazionali</h1>
+    <p>Scegli la tua maglia preferita delle Nazionali</p>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="serie-a.html">Serie A</a></li>
+        <li><a href="premier-league.html">Premier League</a></li>
+        <li><a href="nazionali.html">Nazionali</a></li>
+        <div class="search-container" id="search-container">
+          <input type="text" id="search-bar" placeholder="Cerca magliette..." onkeyup="searchProducts()">
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="maglie-section">
+      <div class="container" id="shirt-container">
+        <script>
+          const nationalTeams = [
+            {
+              country: "Italia",
+              legend: "Paolo Maldini",
+              legendImg: "https://www.ilnostrocalcio.it/wp-content/uploads/2021/04/0-16.jpg",
+              shirts: [
+                { year: "New 2024", image: "https://www.figcstore.com/images/figc/products/large/IT23A08_1.webp", link: "https://www.figcstore.com/it/italia-figc-maglia-gara-home-authentic-2024" },
+                { year: "Old 2006", image: "https://italiansportswearcollection.com/cdn/shop/products/2_1aa6fa7b-1cf0-4eb9-8952-ea75658e3540.jpg?v=1690979686", link: "https://italiansportswearcollection.com/it-it/products/2006-italy-world-cup-home-jersey" }
+              ]
+            },
+            {
+              country: "Francia",
+              legend: "Zinedine Zidane",
+              legendImg: "https://cdn.artphotolimited.com/images/5a09bb8dcfe9056714cea41c/1000x1000/zinedine-zidane-2-2008-couleur.jpg",
+              shirts: [
+                { year: "New 2024", image: "https://images.footballfanatics.com/france-national-team/france-nike-home-stadium-shirt-2024-womens-with-mbappe-10-printing_ss5_p-201419100+pv-2+u-j1blc6gfdwlanhmr17mb+v-yb38rhft3dxqans9wary.jpg?_hv=2&w=900", link: "https://www.fanatics.it/it/soccer-national-teams/france-national-team/maglia-gara-francia-home-stadium-nike-2024-mbappe-10-donna/o-1478+t-14729365+p-5700895926279+z-9-3295446404" },
+                { year: "Old 1998", image: "https://www.magliecalciovintage.it/wp-content/uploads/2024/03/FRANCIA-MAGLIA-ADIDAS-1998-BLU-10-ZIDANE-SMALL-a62b-1.jpg", link: "https://www.ebay.it/itm/145685540943" }
+              ]
+            },
+            {
+              country: "Brasile",
+              legend: "Pelé",
+              legendImg: "https://www.hitech-sport.com/wp-content/uploads/2020/05/pele-brasile.jpg",
+              shirts: [
+                { year: "New 2024", image: "https://calcioitalia.com/media/cache/sylius_shop_product_large_thumbnail/3d/a0/8ba0b55e3cf105e229166a031bf3.jpeg", link: "https://calcioitalia.com/it_IT/products/brasile-maglia-home-2022-23" },
+                { year: "Old 2002", image: "https://backend.memorabid.com/images/articles/15181/bc5efb8c-9ed9-4ce7-90f6-32a0047f1da5.jpg?w=600", link: "https://www.memorabid.com/it/auction/28541-maglia-gara-ronaldo-brasile-world-cup-2002" }
+              ]
+            },
+            {
+              country: "Argentina",
+              legend: "Diego Maradona",
+              legendImg: "https://cdn.artphotolimited.com/images/5f60bc53bd40b8173f11e855/1000x1000/diego-maradona-playing-for-argentina-in-1986.jpg",
+              shirts: [
+                { year: "New 2024", image: "https://calcioitalia.com/media/cache/sylius_shop_product_original/e4/a0/36bcab809aa1e25b07ac5c7b1496.jpeg", link: "https://calcioitalia.com/it_IT/products/argentina-maglia-bambino-home-2024-25" },
+                { year: "Old 1986", image: "https://italiansportswearcollection.com/cdn/shop/products/1986ARGENTINAHOMEJERSEY_2.jpg?v=1670609079", link: "https://italiansportswearcollection.com/it-it/products/1986-argentina-home-jersey" }
+              ]
+            },
+            {
+              country: "Germania",
+              legend: "Franz Beckenbauer",
+              legendImg: "https://i.ebayimg.com/images/g/PHsAAOSwAuNW70gK/s-l1200.jpg",
+              shirts: [
+                { year: "New 2024", image: "https://calcioitalia.com/media/cache/sylius_shop_product_large_thumbnail/e0/95/7bc2f3de5ea0fc135c6d860727f9.jpeg", link: "https://calcioitalia.com/it_IT/products/germania-maglia-home-2024-25" },
+                { year: "Old 1990", image: "https://egress.storeden.net/gallery/626fb4795fb8e0b4fcfd2102", link: "https://www.topvintagefootballshirts.com/product/17228790/1990-92-germania-maglia-home-m-top-" }
+              ]
+            },
+            {
+              country: "Inghilterra",
+              legend: "Bobby Charlton",
+              legendImg: "https://i.pinimg.com/474x/aa/c0/dd/aac0dd82a511d2644678a62446912f68.jpg",
+              shirts: [
+                { year: "New 2024", image: "https://calcioitalia.com/media/cache/sylius_shop_product_original/6f/77/2aa1a0d74a1de2b992868f1db5a7.jpeg", link: "https://calcioitalia.com/it_IT/products/inghilterra-maglia-home-2023-24" },
+                { year: "Old 1996", image: "https://www.vintagefootballclub.com/wp-content/uploads/2018/06/england-1996-1.jpg", link: "https://www.vintagefootballclub.com/negozio/inghilterra-1996-maglia-storica-calcio/" }
+              ]
+            },
+            {
+              country: "Spagna",
+              legend: "Andrés Iniesta",
+              legendImg: "https://www.ansa.it/webimages/news_base/2014/3/28/f93df685f37e5b2ed3b12c3a1abdaca3.jpg",
+              shirts: [
+                {
+                  year: "New 2024",
+                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRasR_fqhC1s_2_YJKffQN5oFaHHVGMvIn-CA&s",
+                  link: "https://calcioitalia.com/it_IT/products/spagna-maglia-home-2024-25"
+                },
+                {
+                  year: "Old 2010",
+                  image: "https://www.magliecalciovintage.it/wp-content/uploads/2022/12/SPAGNA-MAGLIA-ADIDAS-2010-11-ROSSA-SMALL-1.jpg",
+                  link: "https://www.magliecalciovintage.it/prodotto/spagna-2010-maglia-adidas-home/"
+                }
+              ]
+            },
+            {
+              country: "Portogallo",
+              legend: "Cristiano Ronaldo",
+              legendImg: "https://pbs.twimg.com/media/C7jZxLtXQAA_4_2.jpg:large",
+              shirts: [
+                {
+                  year: "New 2024",
+                  image: "https://calcioitalia.com/media/cache/sylius_shop_product_large_thumbnail/3e/e3/dbc0ac436778c4ad59c198b81bb5.jpeg",
+                  link: "https://calcioitalia.com/it_IT/products/portogallo-maglia-home-2025-26"
+                },
+                {
+                  year: "Old 2004",
+                  image: "https://www.magliecalciovintage.it/wp-content/uploads/2022/03/PORTOGALLO-MAGLIA-NIKE-2004-ROSSA-LARGE-1.jpg",
+                  link: "https://www.magliecalciovintage.it/prodotto/portogallo-2004-maglia-nike-home-2/"
+                }
+              ]
+            },
+            {
+              country: "Olanda",
+              legend: "Johan Cruijff",
+              legendImg: "https://www.oggi.it/attualita/wp-content/uploads/sites/2/nggallery/johan-cruijff-e-morto-addio-alla-leggenda-del-calcio-le-foto/561494_10151236168560796_1449231231_n.jpg",
+              shirts: [
+                {
+                  year: "New 2024",
+                  image: "https://images.stockx.com/images/Nike-Netherlands-2024-25-Match-Home-ADV-Authentic-Jersey-Safety-Orange-Blue-Void-Copa-Blue-Void.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1717176791",
+                  link: "https://stockx.com/it-it/nike-netherlands-2024-25-match-home-adv-authentic-jersey-safety-orange-blue-void-copa-blue-void"
+                },
+                {
+                  year: "Old 2004",
+                  image: "https://www.sportsaga.it/images/thumbs/0027727_cruyff-holland-retro-football-shirt-wc-1974-number-14-longsleeve.jpeg",
+                  link: "https://www.sportsaga.it/cruyff-classics-maglia-vintage-paesi-bassi-coppa-del-mondo-1974-numero-14-maniche-lunghe"
+                }
+              ]
+            },
+            {
+              country: "Croazia",
+              legend: "Luca Modric",
+              legendImg: "https://3seaseurope.com/wp-content/uploads/2023/04/mrodic.webp",
+              shirts: [
+                {
+                  year: "New 2024",
+                  image: "https://images.footballfanatics.com/croatia-national-team/croatia-nike-home-stadium-shirt-2024-womens_ss5_p-200519524+pv-2+u-ce4fuhjx0ri7eurdcvuu+v-kx4cuigtgzjyrq1s5385.jpg?_hv=2&w=900",
+                  link: "https://www.fanatics.it/it/soccer-national-teams/croatia-national-team/maglia-gara-croazia-home-stadium-nike-2024-donna/o-3601+t-36729204+p-5799776149893+z-9-430025077"
+                },
+                {
+                  year: "Old 2004",
+                  image: "https://www.magliecalciovintage.it/wp-content/uploads/2024/04/CROAZIA-MAGLIA-LOTTO-1998-BIANCA-9-SUKER-XL-1.jpg",
+                  link: "https://www.magliecalciovintage.it/prodotto/croazia-1998-maglia-lotto-home-9-suker/"
+                }
+              ]
+            },
+            {
+              country: "Colombia",
+              legend: "Carlos Valderrama",
+              legendImg: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBFxxNbYYY_lNIAjGuP9j06Ol92I5ytmxHSIWGLPlBH_ymQIymvEDaJGG7F2geAI__-SWCKsYcB6YirbjOch_n7QGH6ZxQvt3TDtVODXTIbhlqQ8LwVsWtl3QphmVoL8bDO4VsUORS1Kts/s1600/2896.jpg",
+              shirts: [
+                {
+                  year: "New 2024",
+                  image: "https://goleadashop.com/wp-content/uploads/maglia-Colombia-100th-anniversario-2024-25-Adidas-Copa-America.webp",
+                  link: "https://goleadashop.com/product/maglia-colombia-100th-anniversario-2024-25/"
+                },
+                {
+                  year: "Old 2004",
+                  image: "https://www.classicfootballshirts.co.uk/cdn-cgi/image/fit=pad,q=70,f=webp//pub/media/catalog/product//e/f/efa15e4c449e7c63ede6d5cd029959dfb0e35a3e31e7ba998b4715f22d6591dc.jpeg",
+                  link: "https://www.classicfootballshirts.co.uk/1998-01-colombia-home-shirt-410-xl-colh98847218.html"
+                }
+              ]
+            },
+            {
+              country: "Belgio",
+              legend: "Kevin De Bruyne",
+              legendImg: "https://www.ansa.it/webimages/img_700/2024/6/17/3110e6808f6433aedce026f4b9aeb3c1.jpg",
+              shirts: [
+                {
+                  year: "New 2024",
+                  image: "https://thepitchfootball.com/images/thepitch/products/large/IQ0769.webp",
+                  link: "https://thepitchfootball.com/it/adidas-belgio-maglia-home-ufficiale-2024"
+                },
+                {
+                  year: "Old 2004",
+                  image: "https://www.vintagefootballclub.com/wp-content/uploads/2018/07/belgique-belgie-1961-1-500x500.jpg",
+                  link: "https://www.vintagefootballclub.com/negozio/belgio-1961-maglia-storica-calcio/"
+                }
+              ]
+            },
+            {
+              country: "Svezia",
+              legend: "Ibrahimovic Zlatan",
+              legendImg: "https://www.repstatic.it/content/nazionale/img/2014/09/04/233610791-9f3d688b-21bf-42ac-b026-f75ef1862652.jpg",
+              shirts: [
+                {
+                  year: "New 2024",
+                  image: "https://calcioitalia.com/media/cache/sylius_shop_product_original/e7/06/b4e232562a492969fa1a2745b017.jpeg",
+                  link: "https://calcioitalia.com/it_IT/products/svezia-maglia-home-2024-25"
+                },
+                {
+                  year: "Old 2004",
+                  image: "https://www.magliecalciovintage.it/wp-content/uploads/2024/04/SVEZIA-MAGLIA-ADIDAS-1994-96-GIALLA-LARGE-1.jpg",
+                  link: "https://www.magliecalciovintage.it/prodotto/svezia-1994-96-maglia-adidas-home/"
+                }
+              ]
+            },
+            {
+              country: "Uruguay",
+              legend: "Diego Forlán",
+              legendImg: "https://hips.hearstapps.com/hmg-prod/images/diego-forlan-of-uruguay-celebrates-scoring-the-equalising-news-photo-1741087833.pjpeg",
+              shirts: [
+                {
+                  year: "New 2024",
+                  image: "https://outletdelcalcio.eu/cdn/shop/products/23_NAZIONALI_2131601e-cfc3-4488-ab3c-66ff8b08c104.png?v=1666049447",
+                  link: "https://outletdelcalcio.eu/products/maglia-uruguay-home-2022"
+                },
+                {
+                  year: "Old 2004",
+                  image: "https://stylesjerseyclub.com/wp-content/uploads/2024/05/37.png",
+                  link: "https://stylesjerseyclub.com/product/uruguay-world-cup-2010/"
+                }
+              ]
+            }
+          ]
+        </script>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay">
+    <span class="overlay-close" onclick="toggleOverlay()">&times;</span>
+    <img id="overlay-img" src="" alt="Maglia grande">
+  </div>
+
+  <footer>
+    &copy; 2025 Magliette Calcio. Tutti i diritti riservati.
+  </footer>
+
+  <script src="./js/script3.js"></script>
+</body>
+
+</html>

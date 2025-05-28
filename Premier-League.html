@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premier League - Magliette da Calcio</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/logo.png" alt="ElFootball logo" class="logo-img">
+    </div>
+    <h1>Premier League</h1>
+    <p>Scegli la tua maglia preferita della Premier League!</p>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="serie-a.html">Serie A</a></li>
+        <li><a href="premier-league.html">Premier League</a></li>
+        <li><a href="nazionali.html">Nazionali</a></li>
+        <div class="search-container" id="search-container">
+          <input type="text" id="search-bar" placeholder="Cerca magliette..." onkeyup="searchProducts()">
+      </ul>
+    </nav>
+  </header>
+
+  <body class="premier-league-page">
+
+    <main>
+      <section class="maglie-section">
+        <div class="container" id="shirt-container">
+          <script>
+            const shirts = [
+              { name: "Arsenal 2024", price: "€69.99", image: "https://www.cisalfasport.it/on/demandware.static/-/Sites-cisalfa-master/default/dwdc20a1e2/cisalfa/files/S5704867-UNI/image/S5704867_UNI.jpg", link: "https://www.cisalfasport.it/it-it/adidas/maglia-calcio-ufficiale-arsenal-home-24-25-m-S5704867.html" },
+              { name: "Aston Villa 2024", price: "€78.00", image: "https://images.footballfanatics.com/aston-villa/aston-villa-adidas-home-shirt-2024-25-with-watkins-11-printing_ss5_p-202019937+pv-2+u-qswbslyffhpuf4nhm7kv+v-ncplmpiwttpab7kfcyrz.jpg?_hv=2&w=900", link: "https://www.fanatics.it/it/premier-league/aston-villa/aston-villa-maglia-gara-home-adidas-2024-25-ollie-watkins-11/o-32536028+t-97874260+p-68445571811+z-9-2313590227" },
+              { name: "Bournemouth 2024", price: "€55.00", image: "https://www.lacampionessa.com/44898/umbro-2024-25-bournemouth-home-shirt-m.jpg", link: "https://www.lacampionessa.com/20944-premier-league/umbro-2024-25-bournemouth-home-shirt-m.html" },
+              { name: "Brentford 2024", price: "€99.90", image: "https://calcioitalia.com/media/cache/sylius_shop_product_large_thumbnail/2f/b5/af52160562daf20e759dddcdaea0.jpeg", link: "https://calcioitalia.com/it_IT/products/brentford-maglia-home-2024-25" },
+              { name: "Brighton 2024", price: "€98.00", image: "https://outletdelcalcio.eu/cdn/shop/files/1_cc1a80c3-6cdc-4568-9d3a-f47c7b65da2b.png?v=1724680208", link: "https://outletdelcalcio.eu/products/maglia-brighton-home-2024-25" },
+              { name: "Chelsea 2024", price: "€99.99", image: "https://calcioitalia.com/media/cache/sylius_shop_product_original/7d/9c/8ccbd599a6f4d8e27940709771b3.jpeg", link: "https://calcioitalia.com/it_IT/products/chelsea-maglia-home-2024-25" },
+              { name: "Crystal Palace 2024", price: "€98.00", image: "https://www.macron.com/media/catalog/product/cache/7854776c5a059fa4314600f243e72018/0/7/071d6839fbf69d297339f879528329ec600013000001.jpg", link: "https://www.macron.com/it/maglia-home-crystal-palace-fc-2024-25.html" },
+              { name: "Everton 2024", price: "€130.00", image: "https://images.footballfanatics.com/everton/everton-castore-home-pro-shirt-2024-25-womens-james-tarkowski-6_ss5_p-202014184+pv-2+u-733floogkzoci6aqsnap+v-n7zp5fhwap0csjiceust.jpg?_hv=2&w=900", link: "https://shop2.skysports.com/it/premier-league/everton/everton-castore-home-pro-shirt-2024-25-womens-with-tarkowski-6-printing/o-43536028+t-86436787+p-658298768+z-7-898965431?_ref=p-PDP:m-PEIAA:pi-PDP_RECOMMENDATIONS_2:i-r0c7:po-7" },
+              { name: "Fulham 2024", price: "€48.00", image: "https://shop.fulhamfc.com/siteimg/prodhires/5639-469.jpg", link: "https://shop.fulhamfc.com/kit/homekit/adult/5639_fulham-2425-adult-home-shirt.html" },
+              { name: "Leicester City 2024", price: "€40.00", image: "https://outletdelcalcio.eu/cdn/shop/files/2_aa5f3b8b-9432-4ebf-a0a4-7589e6bb27a0.png?v=1725732729", link: "https://outletdelcalcio.eu/products/maglia-home-leicester-2024-25" },
+              { name: "Liverpool 2024", price: "€99.00", image: "https://calcioitalia.com/media/cache/sylius_shop_product_original/f5/ab/72e26b44817821dbfa4f58a42896.jpeg", link: "https://calcioitalia.com/it_IT/products/liverpool-maglia-home-2024-25" },
+              { name: "Manchester City 2024", price: "€90.00", image: "https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw887b23ea/images/large/701230876001_pp_01_mcfc.png?sw=1600&sh=1600&sm=fit", link: "https://shop.mancity.com/it/it/manchester-city-maglia-home-2024-25/701230876-teamlightblue.html" },
+              { name: "Manchester United 2024", price: "€70.00", image: "https://cdn.media.amplience.net/i/frasersdev/36739908_o.jpg?v=00010101000000", link: "https://www.sportsdirect.it/adidas-manchester-united-home-shirt-2024-2025-adults-367399" },
+              { name: "Newcastle 2024", price: "€100.00", image: "https://magliecalciostore.com/media/cache/sylius_shop_product_large_thumbnail/82/60/1284f25ba4d0f6595fe1e3191ff4.jpeg", link: "https://magliecalciostore.com/it_IT/products/newcastle-maglia-home-2024-25" },
+              { name: "Nottingham Forest 2024", price: "€60.00", image: "https://outletdelcalcio.eu/cdn/shop/files/1_8807d95b-7fea-41bc-b808-11affe9c5619.png?v=1734178210", link: "https://outletdelcalcio.eu/products/maglia-home-nottingham-forest-2024-25" },
+              { name: "Southampton 2024", price: "€50.00", image: "https://footdealer.co/wp-content/uploads/2024/08/Maillot-Southampton-Domicile-2024-2025.jpg", link: "https://footdealer.co/it/product/maillot-southampton-domicile-2024-2025/" },
+              { name: "Tottenham 2024", price: "€150.00", image: "https://calcioitalia.com/media/cache/sylius_shop_product_original/26/8f/4c3d4e1ed66deb7bd2f909d2f6de.jpeg", link: "https://calcioitalia.com/it_IT/products/tottenham-maglia-autentica-gara-home-2024-25" },
+              { name: "West Ham 2024", price: "€99.50", image: "https://calcioitalia.com/media/cache/sylius_shop_product_large_thumbnail/94/28/5977468b4a43fe887c32f05e2945.jpeg", link: "https://calcioitalia.com/it_IT/products/west-ham-maglia-home-2024-25" },
+              { name: "Wolverhampton 2024", price: "€99.50", image: "https://images.footballfanatics.com/wolverhampton-wanderers/wolverhampton-wanderers-sudu-home-shirt-2024-25-mens_ss5_p-202019832+pv-2+u-4l3bzysrpfwntt7ervvp+v-h5cxicdjnsxuc7kkxenw.jpg?_hv=2&w=900", link: "https://www.fanatics.it/it/premier-league/wolverhampton-wanderers/maglia-wolverhampton-wanderers-sudu-home-2024-25-uomo/o-32201595+t-43283379+p-46005228255+z-9-1582164495" },
+            ];
+          </script>
+        </div>
+      </section>
+    </main>
+
+    <div class="overlay" id="overlay">
+      <span class="overlay-close" onclick="toggleOverlay()">&times;</span>
+      <img id="overlay-img" src="" alt="Maglia grande">
+    </div>
+
+
+
+    <footer>
+      &copy; 2025 Magliette Calcio. Tutti i diritti riservati.
+    </footer>
+
+    <script src="./js/script2.js"></script>
+  </body>
+
+</html>

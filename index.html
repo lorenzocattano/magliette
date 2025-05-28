@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magliette da Calcio</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/logo.png" alt="ElFootball logo" class="logo-img">
+    </div>
+
+    <h1>Maglie da calcio</h1>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="serie-a.html">Serie A</a></li>
+        <li><a href="premier-league.html">Premier League</a></li>
+        <li><a href="nazionali.html">Nazionali</a></li>
+        <div class="search-container" id="search-container">
+          <input type="text" id="search-bar" placeholder="Cerca magliette..." onkeyup="searchProducts()">
+        </div>
+
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Passione per il Calcio, Stile in Ogni Maglia</h2>
+        <p>Acquista le maglie originali delle squadre più amate d’Italia e del mondo.</p>
+        <a href="serie-a.html" class="cta-btn">Scopri la collezione</a>
+      </div>
+
+      <video autoplay muted loop playinline id="bg-video">
+        <source src="videos/v_sfondo.mp4" type="video/mp4">
+      </video>
+
+      <div class="category-grid">
+        <a href="serie-a.html" class="category-card">
+          <img src="https://resource-m.calcionapoli24.it/www/thumbs/1200x/1671957248_90.jpg" alt="Serie A">
+          <h3>Serie A</h3>
+        </a>
+        <a href="premier-league.html" class="category-card">
+          <img
+            src="https://botasot.co/wp-content/uploads/2024/07/tregu-i-transferimeve-premier-liga-prane-miliardit-ja-kush-e-kryeson-listen.jpg"
+            alt="Premier League">
+          <h3>Premier League</h3>
+        </a>
+        <a href="nazionali.html" class="category-card">
+          <img src="https://data.nssmag.com/images/galleries/30728/loghi-nazionali-nss-6.png" alt="Nazionali">
+          <h3>Nazionali</h3>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="overlay" id="overlay">
+    <span class="overlay-close" onclick="toggleOverlay()">&times;</span>
+    <img id="overlay-img" src="" alt="Maglia grande">
+  </div>
+
+  <footer>
+    &copy; 2025 Magliette Calcio. Tutti i diritti riservati.
+  </footer>
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
