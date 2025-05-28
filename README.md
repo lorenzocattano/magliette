@@ -1,3 +1,3 @@
-link al sito delle magliette:
+link a git hub:
 
 https://github.com/lorenzocattano/magliette.git
